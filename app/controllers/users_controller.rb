@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
   def home
-    
+    if logged_in?
+      @user = User.find(session[:user_id])
+    end
   end
   def show
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
   end
   
   def new

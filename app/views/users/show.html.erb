@@ -1,3 +1,36 @@
 <div>
     <div class="text-center h1">ようこそ！　<%= @user.name%></div>
+    <% if logged_in? %>
+    <div>
+        <div>イベントに参加</div>
+        <div>自分の興味あるイベントを探してみよう</div>
+        <div><%=link_to "探そう", events_path %></div>
+    </div>
+    <div>
+        <div>サークルに参加</div>
+        <div>気になるサークルに参加しよう</div>
+        <div><%=link_to "探そう", circles_path %></div>
+    </div>
+    <div>
+        <div>イベントを企画</div>
+        <div>自分の興味あるイベントを探してみよう</div>
+        <div><%=link_to "企画してみよう", new_event_path %></div>
+    </div>
+    <div>
+        <div>サークル作り</div>
+        <div>気になるサークルに参加しよう</div>
+        <div><%=link_to "作ろう", new_circle_path %></div>
+    </div>
+    <% else %>
+    <div>
+        <div>イベントに参加</div>
+        <div>自分の興味あるイベントを探してみよう</div>
+        <div><%=link_to "探そう", login_path %></div>
+    </div>
+    <div>
+        <div>サークルに参加</div>
+        <div>気になるサークルに参加しよう</div>
+        <div><%=link_to "探そう", new_event_path %></div>
+    </div>
+    <% end %>
 </div>

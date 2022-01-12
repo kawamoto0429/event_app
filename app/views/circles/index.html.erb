@@ -1,0 +1,8 @@
+<div class="h1">サークル</div>
+<% @circles.each do |circle|%>
+<div>
+  
+  <%= link_to circle.name, circle_path(circle) %>
+  
+</div>
+<% end %>

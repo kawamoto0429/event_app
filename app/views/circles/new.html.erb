@@ -1,0 +1,10 @@
+<%= form_for(@circle) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_field :name, class: 'field' %>
+  </div>
+  <div class="field">
+    <%= f.text_area :body, class: 'field field-t' %>
+  </div>
+  <%= f.submit "作成", class: "btn btn-primary" %>
+<% end %>

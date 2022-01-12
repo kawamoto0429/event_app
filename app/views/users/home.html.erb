@@ -1,3 +1,16 @@
 <div>
     <div class="text-center h1">ようこそ！　サークルに</div>
+    <% if logged_in? %>
+    <div>
+        <div>イベントに参加</div>
+        <div>自分の興味あるイベントを探してみよう</div>
+        <div><%=link_to "探そう", new_event_path %></div>
+    </div>
+    <% else %>
+    <div>
+        <div>イベントに参加</div>
+        <div>自分の興味あるイベントを探してみよう</div>
+        <div><%=link_to "探そう", login_path %></div>
+    </div>
+    <% end %>
 </div>

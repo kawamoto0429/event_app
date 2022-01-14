@@ -3,6 +3,18 @@ class EventsController < ApplicationController
   
   def index
     @events = Event.all();
+    @genres = Genre.all();
+  end
+  
+  def genre
+    p "======"
+    p params
+    p "======"
+    
+    @genres = Genre.all();
+    @events = Event.where(genre_id: params[:genre_id])
+    
+    # redirect_to genre_path(@events)
   end
   
   def show
@@ -12,16 +24,23 @@ class EventsController < ApplicationController
   def new
     # @event = Event.new
     @event = current_user.events.build if logged_in?
+    @genres = Genre.all();
   end
 
   def create
+    
+    
+    @genres = Genre.all();
     @event = current_user.events.new(event_params)
+    @event.genre_id = params[:genre_id]
+    # @event = @event.new(genre_id: params[:genre_id])
     if @event.save
       flash[:success] = "Micropost created!"
       redirect_to events_path
       
     else
-      render :new
+      
+      render 'new'
     end
   end
 

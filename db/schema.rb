@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220114062644) do
+ActiveRecord::Schema.define(version: 20220114075559) do
 
   create_table "circles", force: :cascade do |t|
     t.string "name"
@@ -21,22 +21,21 @@ ActiveRecord::Schema.define(version: 20220114062644) do
     t.index ["user_id"], name: "index_circles_on_user_id"
   end
 
-  create_table "event_joins", force: :cascade do |t|
-    t.integer "event_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_event_joins_on_event_id"
-    t.index ["user_id"], name: "index_event_joins_on_user_id"
-  end
-
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.string "body"
     t.integer "user_id"
+    t.integer "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_events_on_genre_id"
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "jcircles", force: :cascade do |t|

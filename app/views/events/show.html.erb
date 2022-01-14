@@ -1,2 +1,9 @@
-<%= @event.title%>
-<%= @event.body%>
+<div class="d">
+  <div class="h1"><%= @event.title%></div>
+  <div class="h1">製作者<%= @event.body%></div>
+  <% if already_ejained?(@event)%>
+    <div><%= button_to '参加をやめる',  event_jevent_path(@event), method: :delete%></div>
+  <% else %>
+    <div><%= button_to '参加する',  event_jevents_path(@event) %></div>
+  <% end %>
+</div>

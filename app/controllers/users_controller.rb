@@ -5,7 +5,9 @@ class UsersController < ApplicationController
     end
   end
   def show
-    @user = User.find(session[:user_id])
+    if logged_in?
+      @user = User.find(@current_user.id)
+    end
   end
   
   def new

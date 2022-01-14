@@ -1,26 +1,18 @@
 <% if logged_in? %>
 <div>
-    <div class="text-center h1">ようこそ！　<%= @user.name%></div>
+    <div class="text-center h1"><%= @user.name%></div>
     <div>
-        <div>イベントに参加</div>
-        <div>自分の興味あるイベントを探してみよう</div>
-        <div><%=link_to "探そう", events_path %></div>
+        <div class="h2">参加予定のイベント</div>
+        <% @user.jevent_events.each do |event| %>
+        <div><%= event.title %></div>
+        <% end %>
     </div>
     <div>
-        <div>サークルに参加</div>
-        <div>気になるサークルに参加しよう</div>
-        <div><%=link_to "探そう", circles_path %></div>
+        <div class="h2">参加サークル</div>
+        <% @user.jcircle_circles.each do |circle| %>
+        <div><%= circle.name %></div>
+        <% end %>
     </div>
-    <div>
-        <div>イベントを企画</div>
-        <div>自分の興味あるイベントを探してみよう</div>
-        <div><%=link_to "企画してみよう", new_event_path %></div>
-    </div>
-    <div>
-        <div>サークル作り</div>
-        <div>気になるサークルに参加しよう</div>
-        <div><%=link_to "作ろう", new_circle_path %></div>
-    </div>
-    
 </div>
+
 <% end %>

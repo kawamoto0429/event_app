@@ -1,2 +1,10 @@
-<%= @circle.name%>
-<%= @circle.body%>
+<div class="d">
+  <div class="h1"><%= @circle.name%></div>
+  <div class="h1">製作者<%= @circle.body%></div>
+  
+  <% if already_cjained?(@circle)%>
+    <div><%= button_to '参加をやめる', circle_jcircle_path(@circle), method: :delete%></div>
+  <% else %>
+    <div><%= button_to '参加する', circle_jcircles_path(@circle) %></div>
+  <% end %>
+</div>

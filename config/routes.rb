@@ -6,10 +6,12 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  resources :events,          only: [:index,:show, :new, :create, :destroy]
-  resources :circles,          only: [:index,:show, :new, :create, :destroy]
-  # get '/events/new', to: 'events#new'
-  # post '/events/create', to: 'events#create'
-  # delete '/events/delete', to: 'events#destroy'
+  resources :events,          only: [:index,:show, :new, :create, :destroy] do
+    resources :jevents, only: [:create, :destroy]
+  end
+  resources :circles,          only: [:index,:show, :new, :create, :destroy] do 
+    resources :jcircles, only: [:create, :destroy]
+    
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

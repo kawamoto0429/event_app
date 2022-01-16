@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :events, dependent: :destroy
   has_many :circles, dependent: :destroy
   has_many :jcircles, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :jcircle_circles, through: :jcircles, source: :circle
   has_many :jevents, dependent: :destroy
   has_many :jevent_events, through: :jevents, source: :event

@@ -6,4 +6,21 @@
   <% else %>
     <div><%= button_to '参加する',  event_jevents_path(@event) %></div>
   <% end %>
+  
+</div>
+<div>
+  <div class="h1">コメント一覧</div>
+  <%= form_with model: @comment, url: event_comments_path(@event) do |f| %>
+    <div>
+      <%= f.text_field :text, class: 'field' %>
+      <%= f.submit "作成", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  <div>
+    <ul>
+      <% @comments.each do |c| %>
+        <li><%= c.text %></li>
+      <% end %>
+    </ul>
+  </div>
 </div>

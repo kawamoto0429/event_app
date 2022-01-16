@@ -19,6 +19,7 @@ class EventsController < ApplicationController
   
   def show
     @event = Event.find(params[:id])
+    @comments = Comment.all()
   end
   
   def new
@@ -28,12 +29,13 @@ class EventsController < ApplicationController
   end
 
   def create
-    
+    p "======"
+    p params
+    p "======"
     
     @genres = Genre.all();
     @event = current_user.events.new(event_params)
     @event.genre_id = params[:genre_id]
-    # @event = @event.new(genre_id: params[:genre_id])
     if @event.save
       flash[:success] = "Micropost created!"
       redirect_to events_path

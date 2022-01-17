@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220116111045) do
+ActiveRecord::Schema.define(version: 20220117043729) do
 
   create_table "circles", force: :cascade do |t|
     t.string "name"
@@ -73,6 +73,18 @@ ActiveRecord::Schema.define(version: 20220116111045) do
     t.datetime "updated_at", null: false
     t.index ["circle_id"], name: "index_join_circles_on_circle_id"
     t.index ["user_id"], name: "index_join_circles_on_user_id"
+  end
+
+  create_table "replies", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id"
+    t.integer "comment_id"
+    t.integer "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_replies_on_comment_id"
+    t.index ["event_id"], name: "index_replies_on_event_id"
+    t.index ["user_id"], name: "index_replies_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

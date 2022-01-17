@@ -1,0 +1,17 @@
+<%= form_for(@event) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_field :title, class: 'field' %>
+  </div>
+  <div class="field">
+    <%= f.text_area :body, class: 'field field-t' %>
+  </div>
+  <div class="field">
+    <select name="genre_id">
+      <% @genres.each do |genre| %>
+      <option value="<%= genre.id %>"><%= genre.name %></option>
+      <% end %>
+    </select>
+  </div>  
+  <%= f.submit "作成", class: "btn btn-primary" %>
+<% end %>

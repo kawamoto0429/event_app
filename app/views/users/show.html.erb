@@ -2,9 +2,19 @@
 <div>
     <div class="text-center h1"><%= @user.name%></div>
     <div>
+        <div class="h2">企画したイベント</div>
+        <div class="d">
+            <%= @user.events.each do |event|%>
+            <div><%=link_to event.title, event_path(event.id) %></div>
+            <div><%= link_to "編集", edit_event_path(event.id) %></div>
+            <div><%= link_to "削除", event_path(event.id), method: :delete %></div>
+            <% end %>
+        </div>
+    </div>
+    <div>
         <div class="h2">参加予定のイベント</div>
-        <% @user.jevent_events.each do |event| %>
-        <div><%= event.title %></div>
+        <%= @user.events.each do |event|%>
+        <div><%=link_to event.title, event_path(event.id) %></div>
         <% end %>
     </div>
     <div>

@@ -1,3 +1,19 @@
 <div>
   <div class="h2"><%= @comment.text%>に対してのコメント</div>
+  <div>
+    <%= form_with model: @reply, url: event_comment_reply_path(@event, @comment) do |f| %>
+    <div>
+      <%= f.text_field :content, class: 'field' %>
+      <%= f.submit "作成", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  </div>
+  <div>
+    <% @replies.each do |reply|%>
+    <div class="border hw">
+      <div><%= reply.user.name%></div>
+      <div class="font-s"><%= reply.content%></div>
+    </div>
+    <% end %>
+  </div>
 </div>

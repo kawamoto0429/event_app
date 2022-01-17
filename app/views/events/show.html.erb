@@ -17,10 +17,10 @@
     </div>
   <% end %>
   <div>
-    <ul>
+    <div>
       <% @comments.each do |c| %>
-        <li><%= c.text %></li>
+       <div><%= link_to c.text, event_comment_path(@event, c) %></div>
       <% end %>
-    </ul>
+    </div>
   </div>
 </div>

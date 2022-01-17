@@ -21,7 +21,7 @@ class CirclesController < ApplicationController
       redirect_to circles_path
       
     else
-      render :new
+      render 'new'
     end
   end
 

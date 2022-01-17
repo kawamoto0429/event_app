@@ -37,7 +37,8 @@ class EventsController < ApplicationController
     @event = current_user.events.new(event_params)
     @event.genre_id = params[:genre_id]
     if @event.save
-      flash[:success] = "Micropost created!"
+      @jevent = current_user.jevents.create(event_id: @event.id)
+      flash[:success] = "Event created!"
       redirect_to events_path
       
     else
@@ -45,8 +46,28 @@ class EventsController < ApplicationController
       render 'new'
     end
   end
+  
+  def edit
+    @event = Event.find(params[:id])
+    @genres = Genre.all()
+  end
+  
+  def update
+     @event = Event.find(params[:id])
+      if @event.update(event_params)
+        flash[:success] = "更新しました!"
+        redirect_to event_path(@event)
+      else
+         @genres = Genre.all()
+         render 'new'
+      end
+  end
 
   def destroy
+    @user = current_user
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to user_path(@user)
   end
 
   private

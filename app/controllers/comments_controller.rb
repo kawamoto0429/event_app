@@ -17,6 +17,8 @@ class CommentsController < ApplicationController
   def destroy
   end
   
+  
+  
   def show
     @event = Event.find(params[:event_id])
     @comment = Comment.find(params[:id])

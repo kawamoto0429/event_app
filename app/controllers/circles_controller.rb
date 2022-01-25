@@ -24,6 +24,20 @@ class CirclesController < ApplicationController
       render 'new'
     end
   end
+  
+  def edit
+    @circle = Circle.find(params[:id])
+  end
+  
+  def update
+    @circle = Circle.find(params[:id])
+      if @circle.update(circle_params)
+        flash[:success] = "更新しました!"
+        redirect_to circle_path(@circle)
+      else
+         render 'new'
+      end
+  end
 
   def destroy
   end

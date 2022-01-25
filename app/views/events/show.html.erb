@@ -1,10 +1,12 @@
-<div class="d">
-  <div class="h1"><%= @event.title%></div>
-  <div class="h1">製作者<%= @event.body%></div>
+<div class="mx-auto my-4" style="width: 40rem;">
+  <div class="d-flex">
+    <div class="h1 mr-auto"><%= @event.title%></div>
+    <div class="h4">製作者<%= @event.user.name %></div>
+  </div>
   <% if already_ejained?(@event)%>
-    <div><%= button_to '参加をやめる',  event_jevent_path(@event), method: :delete%></div>
+    <div class="ml-auto"><%= button_to '参加をやめる',  event_jevent_path(@event), method: :delete%></div>
   <% else %>
-    <div><%= button_to '参加する',  event_jevents_path(@event) %></div>
+    <div class="mr-auto"><%= button_to '参加する',  event_jevents_path(@event) %></div>
   <% end %>
   <div>
     <!--<% if current_user %>-->
@@ -13,20 +15,38 @@
     <!--<% end %>-->
   </div>
   
-</div>
-<div>
-  <div class="h1">コメント一覧</div>
-  <%= form_with model: @comment, url: event_comments_path(@event) do |f| %>
+  
+  <div class="d-flex">
+    <div><%= image_tag 'no_mage.jpeg' , class: "image", style: "width: 15rem;" %></div>
     <div>
-      <%= f.text_field :text, class: 'field' %>
-      <%= f.submit "作成", class: "btn btn-primary" %>
+      <ul>
+        <li>参加人数</li>
+        <li>時間</li>
+        <li>場所</li>
+      </ul>
     </div>
-  <% end %>
+  </div>
+  <div class="mt-2 h2">イベント詳細</div>
+  <div class="mt-2 card mx-auto" style= "width: 35rem; height: 20rem;">
+    <div><%= @event.body%></div>
+  </div>
+  <div class="mt-2 h2">コメント一覧</div>
   <div>
+    <%= form_with model: @comment, url: event_comments_path(@event) do |f| %>
+      <div>
+        <%= f.text_field :text, class: 'form-control' %>
+      </div>
+      <div class="text-right">
+        <%= f.submit "作成", class: "btn btn-primary" %>
+      </div>
+    <% end %>
     <div>
-      <% @comments.each do |c| %>
-       <div><%= link_to c.text, event_comment_path(@event, c) %></div>
-      <% end %>
+        <% @event.comments.each do |c| %>
+         <div class="mt-2 pl-2  mx-auto border-bottom" style= "width: 40rem; height: 4rem;">
+           <div><%= c.user.name %></div>
+           <div class="h5"><%= link_to c.text, event_comment_path(@event, c) %></div>
+          </div>
+        <% end %>
     </div>
   </div>
 </div>

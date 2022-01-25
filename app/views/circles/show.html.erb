@@ -1,10 +1,27 @@
-<div class="d">
-  <div class="h1"><%= @circle.name%></div>
-  <div class="h1">製作者<%= @circle.body%></div>
-  
+<div class="mx-auto my-4" style="width: 40rem;">
+  <div class="d-flex">
+    <div class="h1"><%= @circle.name%></div>
+    <div class="h1">製作者<%= @circle.user.name%></div>
+    <% if current_user.id == @circle.user.id%>
+      <ul>
+        <li><%= link_to '編集', edit_circle_path(@circle) %></li>
+        <li><%= link_to '削除', circle_path(@circle), method: :delete %></li>
+      </ul>
+    <% end %>
+  </div>  
   <% if already_cjained?(@circle)%>
-    <div><%= button_to '参加をやめる', circle_jcircle_path(@circle), method: :delete%></div>
+    <div class="ml-auto"><%= button_to '参加をやめる', circle_jcircle_path(@circle), method: :delete%></div>
   <% else %>
-    <div><%= button_to '参加する', circle_jcircles_path(@circle) %></div>
+    <div class="ml-auto"><%= button_to '参加する', circle_jcircles_path(@circle) %></div>
+  <% end %>
+  <div class="mt-2 h2">サークル活動</div>
+  <div class="mt-2 card mx-auto" style= "width: 35rem; height: 20rem;">
+      <div><%= @circle.body%></div>
+  </div>
+  <div class="mt-2 h2">所属メンバー</div>
+  <% @circle.jcircles.each do |jcircle| %>
+    <div class="d-flex">
+      <div><%= jcircle.user.name %></div>
+    </div>
   <% end %>
 </div>

@@ -11,6 +11,8 @@ class EventsController < ApplicationController
     p params
     p "======"
     
+    @genre_id = params[:genre_id]
+    
     @genres = Genre.all();
     @events = Event.where(genre_id: params[:genre_id])
     

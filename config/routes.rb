@@ -7,13 +7,13 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
  
-  resources :events,          only: [:index,:show, :new, :create, :destroy, :edit, :update] do
+  resources :events do
     resources :comments, only: [:create, :destroy, :show] do
       post 'reply', to: 'comments#reply'
     end
     resources :jevents, only: [:create, :destroy]
   end
-  resources :circles,          only: [:index,:show, :new, :create, :destroy] do 
+  resources :circles do 
     resources :jcircles, only: [:create, :destroy]
     
   end

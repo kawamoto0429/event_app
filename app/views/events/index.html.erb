@@ -1,26 +1,27 @@
-<div class="d">
+<div class="d-flex">
     <div class="h1">
         イベント
     </div>
-    <div>
-        <%= form_with url: genre_path, method: :get, local: true do |f| %>
-            <select name="genre_id">
+    <div class="ml-2">
+        <%= form_with url: genre_path, method: :get, class:"d-flex", local: true do |f| %>
+            <select name="genre_id" class="form-control me-2">
               <% @genres.each do |genre| %>
               <option value="<%= genre.id %>"><%= genre.name %></option>
               <% end %>
             </select>
-            <%= f.submit "検索" %>
+            <%= f.submit "検索", class:"btn btn-outline-success" %>
         <% end %>
     </div>
 </div>
-<div class=" h2"> 
-<% @events.each do |event|%>
-    <div class="d mb">
-        <div><%= image_tag 'no_mage.jpeg' , class: "image"%></div>
-        <div>
-            <%= link_to event.title, event_path(event) %>
+<div class="mx-auto" style="width: 50rem;">
+    <div class="h2"> 
+    <% @events.each do |event|%>
+        <div class="d-flex mt-3 pb-4 border-bottom">
+            <div ><%= image_tag 'no_mage.jpeg' , class: "image", style: "width: 10rem;" %></div>
+            <div>
+                <%= link_to event.title, event_path(event) %>
+            </div>
         </div>
-      
+    <% end %>    
     </div>
-<% end %>    
 </div>

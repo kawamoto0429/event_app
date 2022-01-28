@@ -10,6 +10,14 @@
     <%= f.text_area :body, class: 'form-control' %>
   </div>
   <div class="field">
+    <label class="form-label">場所</label>
+    <%= f.text_field :address, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <label class="form-label">開催日時</label>
+    <%= f.datetime_field :hold, class: 'form-control' %>
+  </div>
+  <div class="field">
     <label class="form-label">ジャンルの種類</label>
     <select name="genre_id">
       <% @genres.each do |genre| %>

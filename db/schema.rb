@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20220117043729) do
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.string "body"
+    t.string "address"
+    t.datetime "hold"
     t.integer "user_id"
     t.integer "genre_id"
     t.datetime "created_at", null: false

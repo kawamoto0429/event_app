@@ -8,12 +8,6 @@
   <% else %>
     <div class="mr-auto"><%= button_to '参加する',  event_jevents_path(@event) %></div>
   <% end %>
-  <div>
-    <!--<% if current_user %>-->
-    <!--  <div><%= link_to "編集", edit_event_path(@event.id) %></div>-->
-    <!--  <div><%= link_to "削除", event_path(@event.id), method: :delete %></div>-->
-    <!--<% end %>-->
-  </div>
   
   
   <div class="d-flex">
@@ -21,8 +15,8 @@
     <div>
       <ul>
         <li>参加人数</li>
-        <li>時間</li>
-        <li>場所</li>
+        <li>時間: <%= l @event.hold %></li>
+        <li>場所: <%= @event.address %></li>
       </ul>
     </div>
   </div>

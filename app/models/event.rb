@@ -1,6 +1,8 @@
 class Event < ApplicationRecord
   belongs_to :user
   belongs_to :genre
+  geocoded_by :address
+  after_validation :geocode
   has_many :jevents, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :replies, dependent: :destroy

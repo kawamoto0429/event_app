@@ -16,7 +16,12 @@
       <ul>
         <li>参加人数</li>
         <li>時間: <%= l @event.hold %></li>
-        <li>場所: <%= @event.address %></li>
+        <li>
+          場所: <%= @event.address %>
+          <div id='map'>
+          </div>
+        </li>
+        
       </ul>
     </div>
   </div>
@@ -44,3 +49,35 @@
     </div>
   </div>
 </div>
+<style>
+#map{
+  width: 200px;
+  height: 200px;
+}
+</style>
+
+<script>
+  let map
+
+  function initMap(){
+    geocoder = new google.maps.Geocoder()
+    var test ={lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: test,
+      zoom: 15,
+    });
+
+    var contentString = '住所：<%= @event.address %>';
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+    marker = new google.maps.Marker({
+      position:  test,
+      map: map,
+      title: contentString
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnl3r_XitGNoWCaZvTVKaQh0fclJMJXmQ&callback=initMap" async defer></script>

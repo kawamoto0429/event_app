@@ -2,7 +2,7 @@
     <div class="h1">
         イベント
     </div>
-    <div class="ml-2">
+    <div class="ml-2 mt-2">
         <%= form_with url: genre_path, method: :get, class:"d-flex", local: true do |f| %>
             <select name="genre_id" class="form-control me-2">
               <% @genres.each do |genre| %>
@@ -15,6 +15,9 @@
             </select>
             <%= f.submit "検索", class:"btn btn-outline-success" %>
         <% end %>
+    </div>
+    <div class="ml-2 h1">
+        <%= @genre.name%>
     </div>
 </div>
 <div class="mx-auto" style="width: 50rem;">

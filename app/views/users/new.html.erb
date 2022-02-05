@@ -1,7 +1,7 @@
-<h1>新規登録</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+<div class="card mx-auto mt-2" style="width: 25rem;">
+  <div class="h2 text-center">新規登録</div>
+  <div class=" text-center">
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <%= f.label :name, "名前" %>
@@ -16,7 +16,9 @@
       <%= f.label :password_confirmation, "確認パスワード" %>
       <%= f.password_field :password_confirmation, class:"form-control" %>
 
-      <%= f.submit "登録する", class: "btn btn-primary btn-lg btn-block " %>
+      <div class="mx-auto m-2" style="width: 10rem;">
+        <%= f.submit "登録する", class: "btn btn-primary btn-block" %>
+      </div>
     <% end %>
   </div>
 </div>

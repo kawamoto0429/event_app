@@ -1,3 +1,4 @@
+
 <div class="mx-auto my-4" style="width: 40rem;">
   <div class="d-flex">
     <div class="h1 mr-auto"><%= @event.title%></div>
@@ -8,7 +9,6 @@
   <% else %>
     <div class="mr-auto"><%= button_to '参加する',  event_jevents_path(@event) %></div>
   <% end %>
-  
   
   <div class="d-flex">
     <div><%= image_tag 'no_mage.jpeg' , class: "image", style: "width: 15rem;" %></div>

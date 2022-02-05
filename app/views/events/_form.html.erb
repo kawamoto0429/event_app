@@ -15,13 +15,13 @@
   </div>
   <div class="field">
     <label class="form-label">開催日時</label>
-    <%= f.datetime_field :hold, class: 'form-control', min: Date.current%>
+    <%= f.datetime_field :hold, class: 'form-control', min: Date.current %>
   </div>
   <div class="field">
     <label class="form-label">ジャンルの種類</label>
     <select name="genre_id">
       <% @genres.each do |genre| %>
-      <option value="<%= genre.id %>"><%= genre.name %></option>
+        <option value="<%= genre.id %>"><%= genre.name %></option>
       <% end %>
     </select>
   </div>

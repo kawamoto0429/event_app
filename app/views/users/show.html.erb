@@ -1,36 +1,52 @@
 <% if logged_in? %>
-<div>
-    <div class="text-center h1"><%= @user.name%></div>
+<div class="mx-auto my-4" style="width: 50rem;">
     <div>
-        <div class="h2">企画したイベント</div>
-        <div class="mx-auto" style="width: 60rem;">
-            <%= @user.events.each do |event|%>
-            <div class="d-flex mt-3 pb-4 border-bottom">
-                <div><%=link_to event.title, event_path(event.id) %></div>
-                <div><%= link_to "編集", edit_event_path(event.id) %></div>
-                <div><%= link_to "削除", event_path(event.id), method: :delete %></div>
+        <div class="text-center h1"><%= @user.name%></div>
+        <div class="mt-2 h2">イベント詳細</div>
+        <%= form_for(@user) do |f| %>
+            <div class="mt-2 card mx-auto" style= "width: 35rem; height: 20rem;">
+                <%= f.hidden_field :email %>
+                <%= f.hidden_field :password %>
+                <%= f.hidden_field :password_confirmation %>
+                <%= f.text_area :body, class: 'form-control', style: "width: 35rem; height: 20rem;"%>
+                <div class="ml-auto" style="width: 10rem;">
+                    <%= f.submit "作成", class: "btn btn-primary btn-block" %>
+                </div>
+            </div>
+        <% end %>    
+        <div>
+            <div class="h2">企画したイベント</div>
+            <div class="mx-auto" style="width: 60rem;">
+                <% @user.events.each do |event|%>
+                <div class="d-flex mt-3 pb-4 border-bottom">
+                    <div><%= image_tag 'no_mage.jpeg' , class: "image", style: "width: 10rem;" %></div>
+                    <div><%=link_to event.title, event_path(event.id) %></div>
+                    <div><%= link_to "編集", edit_event_path(event.id) %></div>
+                    <div><%= link_to "削除", event_path(event.id), method: :delete %></div>
+                </div>    
+                <% end %>
+            </div>
+        </div>
+        <div>
+            <div class="h2">参加予定のイベント</div>
+            <div class="mx-auto" style="width: 60rem;">
+                <% @user.events.each do |event|%>
+                <div class="d-flex mt-3 pb-4 border-bottom">
+                    <div><%= image_tag 'no_mage.jpeg' , class: "image", style: "width: 10rem;" %></div>
+                    <div><%=link_to event.title, event_path(event.id) %></div>
+                </div>
+                <% end %>
             </div>    
-            <% end %>
+        </div>
+        <div>
+            <div class="h2">参加サークル</div>
+            <div class="mx-auto" style="width: 60rem;">
+                <% @user.jcircle_circles.each do |circle| %>
+                    <div><%= image_tag 'no_mage.jpeg' , class: "image", style: "width: 10rem;" %></div>
+                    <div><%=link_to circle.name, circle_path(circle.id)%></div>
+                <% end %>
+            </div>    
         </div>
     </div>
-    <div>
-        <div class="h2">参加予定のイベント</div>
-        <div class="mx-auto" style="width: 60rem;">
-            <%= @user.events.each do |event|%>
-            <div class="d-flex mt-3 pb-4 border-bottom">
-                <div><%=link_to event.title, event_path(event.id) %></div>
-            </div>
-            <% end %>
-        </div>    
-    </div>
-    <div>
-        <div class="h2">参加サークル</div>
-        <div class="mx-auto" style="width: 60rem;">
-            <% @user.jcircle_circles.each do |circle| %>
-            <div><%=link_to circle.name, circle_path(circle.id)%></div>
-            <% end %>
-        </div>    
-    </div>
 </div>
-
 <% end %>

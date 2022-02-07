@@ -25,16 +25,20 @@ class UsersController < ApplicationController
     end
   end
   
-  # def update
-  #   @user = User.find(params[:id])
-  #   if @user.update(user_params)
-  #       flash[:success] = "更新しました!"
-  #       redirect_to user_path(@user)
-  #     else
+  def edit
+   @user = User.find(current_user.id)
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+        flash[:success] = "更新しました!"
+        redirect_to user_path(@user)
+    else
          
-  #       render 'new'
-  #     end
-  # end
+        render 'edit'
+    end
+  end
   
   private
 

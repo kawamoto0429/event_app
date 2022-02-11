@@ -4,7 +4,10 @@
         <div class="text-center h1"><%= @user.name%></div>
         <div class="mt-2 h2">自己紹介</div>
         <div class="mt-2 card mx-auto" style= "width: 35rem; height: 20rem;">
-            <%= @user.body %>
+            <%=form_with model: @profile, url: user_profile_path(@user, @profile), local:true do |f|%>
+                <%= f.text_area :content, class: 'form-control'%>
+                <%= f.submit "編集"%>
+            <% end %>
         </div>
         <div>
             <div class="h2">企画したイベント</div>

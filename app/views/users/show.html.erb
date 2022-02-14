@@ -1,6 +1,7 @@
 <% if logged_in? %>
 <div class="mx-auto my-4" style="width: 50rem;">
     <div>
+        <% if @user.id == current_user.id %>
         <div class="text-center h1"><%= @user.name%></div>
         <div class="mt-2 h2">自己紹介</div>
         <div class="mt-2 card mx-auto" style= "width: 35rem; height: 20rem;">
@@ -9,6 +10,13 @@
                 <%= f.submit "編集"%>
             <% end %>
         </div>
+        <% else %>
+        <div class="text-center h1"><%= @user.name%></div>
+        <div class="mt-2 h2">自己紹介</div>
+        <div class="mt-2 card mx-auto" style= "width: 35rem; height: 20rem;">
+            <%= @profile.content%>
+        </div>
+        <% end %>
         <div>
             <div class="h2">企画したイベント</div>
             <div class="mx-auto" style="width: 60rem;">

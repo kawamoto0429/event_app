@@ -5,13 +5,14 @@ class UsersController < ApplicationController
     end
   end
   def show
-    if logged_in?
-      @user = User.find(@current_user.id)
-      @profile = Profile.find_by(user_id: @current_user.id)
-      puts "======"
-      puts @profile
-      puts "======"
-    end
+    puts "======"
+    puts params[:id]
+    puts "======"
+    @user = User.find(params[:id])
+    @profile = Profile.find_by(user_id: params[:id])
+    puts "======"
+    puts @profile
+    puts "======"
   end
   
   def new

@@ -21,4 +21,6 @@ module SessionsHelper
   def e_d_user(event)
     current_user == event.user_id
   end
+  
+  
 end

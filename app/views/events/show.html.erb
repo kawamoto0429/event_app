@@ -40,12 +40,32 @@
       </div>
     <% end %>
     <div>
-        <% @event.comments.each do |c| %>
-         <div class="mt-2 pl-2  mx-auto border-bottom" style= "width: 40rem; height: 4rem;">
-           <div><%= c.user.name %></div>
-           <div class="h5"><%= link_to c.text, event_comment_path(@event, c) %></div>
-          </div>
-        <% end %>
+        <%if @event.comments.count > 0 %>
+          <% @event.comments.each do |c| %>
+           <div class="mt-2 pl-2  mx-auto border-bottom" style= "width: 40rem; height: 4rem;">
+             <div><%= c.user.name %></div>
+             <div class="h5"><%= link_to c.text, event_comment_path(@event, c) %></div>
+            </div>
+          <% end %>
+        <% else %>    
+            <div class="d-flex mt-3 pb-4 border-bottom">
+                <div>コメントはありません</div>
+            </div>  
+        <% end %>    
+    </div>
+    <div class="mt-2 h2">イベント参加者</div>
+    <div>
+        <%if @event.jevents.count > 0 %>
+          <% @event.jevents.each do |jevent| %>
+           <div class="mt-2 pl-2  mx-auto border-bottom" style= "width: 40rem; height: 4rem;">
+             <div><%= link_to jevent.user.name, user_path(jevent.user) %></div>
+            </div>
+          <% end %>
+        <% else %>    
+            <div class="d-flex mt-3 pb-4 border-bottom">
+                <div>コメントはありません</div>
+            </div>  
+        <% end %>    
     </div>
   </div>
 </div>

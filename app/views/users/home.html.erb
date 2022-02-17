@@ -1,26 +1,26 @@
 <% if logged_in? %>
 <div class="container">
-    <div class="text-center h1 h-100px">ようこそ！　<%= @user.name%></div>
-    <div class="row">
-        <div class="card mt-2 mr-2 col-sm" style="width: 20rem;">
-            <div class="h4 mx-auto">イベントに参加</div>
+    <div class="text-center h1 mt-70px">ようこそ！　<%= @user.name%></div>
+    <div class="row w-800px mt-100px">
+        <div class="card mt-2 mr-2 col-sm " style="height:10rem;">
+            <div class="h4 mx-auto mt-3">イベントに参加</div>
             <p class="card-text mx-auto">自分の興味あるイベントを探してみよう</p>
             <div class="btn btn-primary mx-auto" style="width: 15rem;"><%=link_to "探そう", events_path, class:"text-white"%></div>
         </div>
-        <div class="card mt-2 col-sm" style="width: 20rem;">
-            <div class="h4 mx-auto">サークルに参加</div>
+        <div class="card mt-2 col-sm" style="height:10rem;">
+            <div class="h4 mx-auto mt-3">サークルに参加</div>
             <p class="card-text mx-auto">気になるサークルに参加しよう</p>
             <div class="btn btn-primary mx-auto" style="width: 15rem;"><%=link_to "探そう", circles_path, class:"text-white" %></div>
         </div>
     </div>
-    <div class="row">
-        <div class="card mt-2 mr-2 col-sm" style="width: 20rem;">
-            <div class="h4 mx-auto">イベントを企画</div>
+    <div class="row w-800px ">
+        <div class="card mt-2 mr-2 col-sm" style="height:10rem;">
+            <div class="h4 mx-auto mt-3">イベントを企画</div>
             <p class="card-text mx-auto">自分の興味あるイベントを探してみよう</p>
             <div class="btn btn-primary mx-auto" style="width: 15rem;"><%=link_to "企画してみよう", new_event_path, class:"text-white" %></div>
         </div>
-        <div class="card mt-2 col-sm" style="width: 20rem;">
-            <div class="h4 mx-auto">サークル作り</div>
+        <div class="card mt-2 col-sm" style="height:10rem;">
+            <div class="h4 mx-auto mt-3">サークル作り</div>
             <p class="card-text mx-auto">気になるサークルに参加しよう</p>
             <div class="btn btn-primary mx-auto" style="width: 15rem;"><%=link_to "作ろう", new_circle_path, class:"text-white" %></div>
         </div>
@@ -28,29 +28,29 @@
 </div>
 <% else %>
 <div class="container">
-    <div class="text-center h1 h-100px">ようこそ！　サークルに！</div>
-    <div class="row">
-        <div class="card mt-2 mr-2 col-sm" style="width: 20rem;">
-            <div class="h4 mx-auto">イベントに参加</div>
+    <div class="text-center h1 mt-100px">ようこそ！　サークルに！</div>
+    <div class="row w-800px mt-100px">
+        <div class="card mt-2 mr-2 col-sm m" style="height:10rem;">
+            <div class="h4 mx-auto mt-3">イベントに参加</div>
             <p class="card-text mx-auto">自分の興味あるイベントを探してみよう</p>
-            <div class="btn btn-primary mx-auto" style="width: 15rem;"><%=link_to "探そう", login_path, class:"text-white"%></div>
+            <div class="btn btn-primary mx-auto " style="width: 15rem;"><%=link_to "探そう", login_path, class:"text-white"%></div>
         </div>
-        <div class="card mt-2 col-sm" style="width: 20rem;">
-            <div class="h4 mx-auto">サークルに参加</div>
+        <div class="card mt-2 col-sm m" style="height:10rem;">
+            <div class="h4 mx-auto mt-3">サークルに参加</div>
             <p class="card-text mx-auto">気になるサークルに参加しよう</p>
-            <div class="btn btn-primary mx-auto" style="width: 15rem;"><%=link_to "探そう", login_path, class:"text-white" %></div>
+            <div class="btn btn-primary mx-auto " style="width: 15rem;"><%=link_to "探そう", login_path, class:"text-white" %></div>
         </div>
     </div>
-    <div class="row">
-        <div class="card mt-2 mr-2 col-sm" style="width: 20rem;">
-            <div class="h4 mx-auto">イベントを企画</div>
+    <div class="row w-800px">
+        <div class="card mt-2 mr-2 col-sm m" style="height:10rem;">
+            <div class="h4 mx-auto mmt-3">イベントを企画</div>
             <p class="card-text mx-auto">自分の興味あるイベントを探してみよう</p>
-            <div class="btn btn-primary mx-auto" style="width: 15rem;"><%=link_to "企画してみよう", login_path, class:"text-white" %></div>
+            <div class="btn btn-primary mx-auto " style="width: 15rem;"><%=link_to "企画してみよう", login_path, class:"text-white" %></div>
         </div>
-        <div class="card mt-2 col-sm" style="width: 20rem;">
-            <div class="h4 mx-auto">サークル作り</div>
+        <div class="card mt-2 col-sm m " style="height:10rem;">
+            <div class="h4 mx-auto mt-3">サークル作り</div>
             <p class="card-text mx-auto">気になるサークルに参加しよう</p>
-            <div class="btn btn-primary mx-auto" style="width: 15rem;"><%=link_to "作ろう", login_path, class:"text-white" %></div>
+            <div class="btn btn-primary mx-auto " style="width: 15rem;"><%=link_to "作ろう", login_path, class:"text-white" %></div>
         </div>
     </div>
 </div>

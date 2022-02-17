@@ -4,8 +4,8 @@
     <% @circles.each do |circle|%>
       <div class="d-flex mt-3 pb-4 border-bottom">
         <div ><%= image_tag 'no_mage.jpeg' , class: "image", style: "width: 10rem;" %></div>
-        <div>
-            <%= link_to circle.name, circle_path(circle) %>
+        <div class="pc">
+            <%= link_to circle.name, circle_path(circle), class:"pl-4" %>
         </div>
       </div>
     <% end %>  

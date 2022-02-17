@@ -6,7 +6,7 @@
         <div class="mt-2 h2">自己紹介</div>
         <div class="mt-2 card mx-auto" style= "width: 35rem; height: 20rem;">
             <%=form_with model: @profile, url: user_profile_path(@user, @profile), local:true do |f|%>
-                <%= f.text_area :content, class: 'form-control'%>
+                <%= f.text_area :content, class: 'form-control', style:"width: 35rem; height: 18rem;"%>
                 <%= f.submit "編集"%>
             <% end %>
         </div>
@@ -17,16 +17,17 @@
             <%= @profile.content%>
         </div>
         <% end %>
-        <div>
+        <% if @user.id == current_user.id %>
+        <div class="mt-4">
             <div class="h2">企画したイベント</div>
-            <div class="mx-auto" style="width: 60rem;">
+            <div class="mx-auto" style="width: 50rem;">
                 <%if @user.events.count > 0%>
                     <% @user.events.each do |event|%>
                     <div class="d-flex mt-3 pb-4 border-bottom">
                         <div><%= image_tag 'no_mage.jpeg' , class: "image", style: "width: 10rem;" %></div>
-                        <div><%=link_to event.title, event_path(event.id) %></div>
-                        <div><%= link_to "編集", edit_event_path(event.id) %></div>
-                        <div><%= link_to "削除", event_path(event.id), method: :delete %></div>
+                        <div class="pc h3"><%=link_to event.title, event_path(event.id), class:"pl-4" %></div>
+                        <div class="pc h3"><%= link_to "編集", edit_event_path(event.id),  class:"pl-4" %></div>
+                        <div class="pc h3"><%= link_to "削除", event_path(event.id), method: :delete,  class:"pl-4" %></div>
                     </div>    
                     <% end %>
                 <% else %>    
@@ -36,14 +37,14 @@
                 <% end %>
             </div>
         </div>
-        <div>
+        <div class="mt-4">
             <div class="h2">参加予定のイベント</div>
-            <div class="mx-auto" style="width: 60rem;">
+            <div class="mx-auto" style="width: 50rem;">
                 <%if @user.jevents.count > 0%>
                     <% @user.events.each do |event|%>
                     <div class="d-flex mt-3 pb-4 border-bottom">
-                        <div><%= image_tag 'no_mage.jpeg' , class: "image", style: "width: 10rem;" %></div>
-                        <div><%=link_to event.title, event_path(event.id) %></div>
+                        <div class="pc h3"><%= image_tag 'no_mage.jpeg' , class: "image", style: "width: 10rem;" %></div>
+                        <div class="pc h3"><%=link_to event.title, event_path(event.id), class:"pl-4" %></div>
                     </div>
                     <% end %>
                 <% else %>    
@@ -53,13 +54,13 @@
                 <% end %>    
             </div>    
         </div>
-        <div>
+        <div class="mt-4">
             <div class="h2">参加サークル</div>
-            <div class="mx-auto" style="width: 60rem;">
+            <div class="mx-auto" style="width: 50rem;">
                 <%if @user.jcircles.count > 0%>
                     <% @user.jcircle_circles.each do |circle| %>
-                        <div><%= image_tag 'no_mage.jpeg' , class: "image", style: "width: 10rem;" %></div>
-                        <div><%=link_to circle.name, circle_path(circle.id)%></div>
+                        <div class="pc h3"><%= image_tag 'no_mage.jpeg' , class: "image", style: "width: 10rem;" %></div>
+                        <div class="pc h3"><%=link_to circle.name, circle_path(circle.id), class:"pl-4"%></div>
                     <% end %>
                 <% else %>    
                     <div class="d-flex mt-3 pb-4 border-bottom">
@@ -68,6 +69,57 @@
                 <% end %>       
             </div>    
         </div>
+        <% else %>
+        <div class="mt-4">
+            <div class="h2">企画したイベント</div>
+            <div class="mx-auto" style="width: 50rem;">
+                <%if @user.events.count > 0%>
+                    <% @user.events.each do |event|%>
+                    <div class="d-flex mt-3 pb-4 border-bottom">
+                        <div><%= image_tag 'no_mage.jpeg' , class: "image", style: "width: 10rem;" %></div>
+                        <div class="pc h3"><%=link_to event.title, event_path(event.id), class:"pl-4" %></div>
+                    </div>    
+                    <% end %>
+                <% else %>    
+                    <div class="d-flex mt-3 pb-4 border-bottom">
+                        <div>現在企画したイベントはありません</div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+        <div class="mt-4">
+            <div class="h2">参加予定のイベント</div>
+            <div class="mx-auto" style="width: 50rem;">
+                <%if @user.jevents.count > 0%>
+                    <% @user.events.each do |event|%>
+                    <div class="d-flex mt-3 pb-4 border-bottom">
+                        <div class="pc h3"><%= image_tag 'no_mage.jpeg' , class: "image", style: "width: 10rem;" %></div>
+                        <div class="pc h3"><%=link_to event.title, event_path(event.id), class:"pl-4" %></div>
+                    </div>
+                    <% end %>
+                <% else %>    
+                    <div class="d-flex mt-3 pb-4 border-bottom">
+                        <div>参加予定のイベントはありません</div>
+                    </div>
+                <% end %>    
+            </div>    
+        </div>
+        <div class="mt-4">
+            <div class="h2">参加サークル</div>
+            <div class="mx-auto" style="width: 50rem;">
+                <%if @user.jcircles.count > 0%>
+                    <% @user.jcircle_circles.each do |circle| %>
+                        <div class="pc h3"><%= image_tag 'no_mage.jpeg' , class: "image", style: "width: 10rem;" %></div>
+                        <div class="pc h3"><%=link_to circle.name, circle_path(circle.id), class:"pl-4"%></div>
+                    <% end %>
+                <% else %>    
+                    <div class="d-flex mt-3 pb-4 border-bottom">
+                        <div>現在所属サークルはありません</div>
+                    </div>
+                <% end %>       
+            </div>    
+        </div>
+        <%end%>
     </div>
 </div>
 <% end %>

@@ -1,18 +1,18 @@
 
-<div class="card mx-auto mt-2" style="width: 25rem;">
-  <div class="h2 text-center">ログイン</div>
-  <div class=" text-center">
+<div class="card mx-auto mt-4" style="width: 25rem;">
+  <div class="h2 text-center mt-4">ログイン</div>
+    <div class="text-center m" style="width: 20rem;">
     <%= form_for(:session, url: login_path) do |f| %>
       <%= f.label :email, "E-mail" %>
       <%= f.email_field :email, class: 'form-control' %>
       <%= f.label :password, "Password" %>
       <%= f.password_field :password, class: 'form-control' %>
 
-      <div class="mx-auto m-2" style="width: 15rem;">
+      <div class="mx-auto m-3" style="width: 15rem;">
         <%= f.submit "login", class: "btn btn-primary btn-block" %>
       </div>
     <% end %>
-
+    
     <p></p><%= link_to "新規登録", signup_path %></p>
-  </div>
+    </div>
 </div>
